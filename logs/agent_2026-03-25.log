@@ -177,3 +177,11 @@
 后日预报: Mist, 最高19°C, 最低15°C, 降雨概率0%
 
 以上天气信息仅供参考，具体以实际为准。
+2026-03-25 22:39:37,346 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 22:39:37,347 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 如何联系客服？
+2026-03-25 22:41:32,660 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 22:41:32,660 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 扫地机器人不工作怎么办？
+2026-03-25 22:41:35,741 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '扫地机器人不工作 故障排除'}
+2026-03-25 22:41:39,651 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 22:41:39,684 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 22:41:39,684 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 扫地机器人不工作时，可按以下步骤排查：检查电源是否接通、电池是否有电；确认开关是否开启；清理滚刷、边刷和传感器上的缠绕物或灰尘；确保充电座接触良好且未被遮挡；查看是否有错误代码提示并对照说明书处理；重启设备尝试恢复。

@@ -26,7 +26,7 @@ def clean_content(text):
 
 # ==================== 页面配置 ====================
 st.set_page_config(
-    page_title="智扫通智能客服",
+    page_title="智能客服"   ,
     page_icon="💬",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -168,7 +168,7 @@ with st.sidebar:
 # ==================== 主界面 ====================
 st.markdown("""
 <div class="main-header">
-    <h1>智扫通智能客服</h1>
+    <h1>智能客服</h1>
     <p>您的专属AI助手，随时为您解答问题</p>
 </div>
 """, unsafe_allow_html=True)
@@ -180,8 +180,8 @@ if len(st.session_state.get("messages", [])) == 0:
     quick_questions = [
         "你好，请介绍一下你自己",
         "你们提供哪些服务？",
-        "如何联系客服？",
-        "有什么优惠活动吗？"
+        "扫地机器人如何安装和使用？",
+        "扫地机器人不工作怎么办？"
     ]
     
     for i, q in enumerate(quick_questions):
