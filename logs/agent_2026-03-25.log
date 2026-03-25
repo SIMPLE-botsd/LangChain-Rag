@@ -1,0 +1,179 @@
+2026-03-25 11:12:54,237 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:12:54,238 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 你有什么功能
+2026-03-25 11:29:05,388 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:29:05,389 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 有什么优惠活动
+2026-03-25 11:29:12,781 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '扫地机器人优惠活动促销信息'}
+2026-03-25 11:29:15,011 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 11:29:15,028 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 11:29:15,028 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 参考资料中未提及扫地机器人优惠活动促销信息。
+2026-03-25 11:29:44,031 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:29:44,031 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 如何联系客服
+2026-03-25 11:35:58,614 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:35:58,614 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : hello
+2026-03-25 11:36:11,221 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:36:11,221 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : aaa
+2026-03-25 11:36:17,411 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:36:17,412 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : aaa
+2026-03-25 11:36:42,230 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:36:42,230 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : aaa
+2026-03-25 11:37:58,201 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:37:58,201 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 你们提供哪些服务？
+2026-03-25 11:41:17,239 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:41:17,239 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 你好，请介绍一下你自己
+2026-03-25 11:41:46,085 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:41:46,086 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : aaa
+2026-03-25 11:43:06,691 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:43:06,691 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 有什么优惠活动吗？
+2026-03-25 11:53:20,558 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:53:20,559 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 我所在的位置要买什么机器人
+2026-03-25 11:53:23,901 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 11:53:25,063 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 11:53:25,078 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 11:53:25,079 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 11:53:28,921 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 11:53:30,480 - agent - ERROR - agent_tools.py:59 - 天气查询失败: 'list' object has no attribute 'get'
+2026-03-25 11:53:30,480 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 11:53:30,498 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 11:53:30,499 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，无法获取Nanchang的天气信息，请稍后重试。
+2026-03-25 11:53:35,735 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '南方高湿度地区扫地机器人选购建议'}
+2026-03-25 11:53:39,597 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 11:53:39,632 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-25 11:53:39,633 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 南方高湿度地区选购扫地机器人时，应优先选择具备良好防潮性能和密封设计的机型，以防止内部电子元件受潮损坏；同时建议选择带有自动集尘或烘干功能的型号，有助于减少潮湿环境下垃圾异味和细菌滋生。
+2026-03-25 11:53:58,677 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:53:58,677 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : ？
+2026-03-25 11:56:56,054 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:56:56,054 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 如何联系客服？
+2026-03-25 11:56:58,139 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '如何联系扫地机器人客服'}
+2026-03-25 11:57:01,601 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 11:57:01,622 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 11:57:01,622 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 可拨打客服热线400-888-1234，或通过品牌官网、官方微信公众号在线联系客服。
+2026-03-25 11:57:16,107 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 11:57:16,107 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 我这里的天气
+2026-03-25 11:57:18,822 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 11:57:19,687 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 11:57:19,701 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 11:57:19,701 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 11:57:27,184 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 11:57:30,406 - agent - ERROR - agent_tools.py:93 - 天气查询失败: 'list' object has no attribute 'get'
+2026-03-25 11:57:30,407 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 11:57:30,429 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 11:57:30,430 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，无法获取Nanchang的天气信息，请稍后重试。原因：'list' object has no attribute 'get'
+2026-03-25 11:57:33,512 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 11:57:35,129 - agent - ERROR - agent_tools.py:93 - 天气查询失败: 'list' object has no attribute 'get'
+2026-03-25 11:57:35,130 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 11:57:35,160 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-25 11:57:35,161 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，无法获取Nanchang的天气信息，请稍后重试。原因：'list' object has no attribute 'get'
+2026-03-25 11:57:38,538 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '不同天气湿度条件下扫地扫拖机器人使用建议'}
+2026-03-25 11:57:42,374 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 11:57:42,393 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有9条历史消息
+2026-03-25 11:57:42,393 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 参考资料中未提及不同天气湿度条件下扫地扫拖机器人的使用建议。
+2026-03-25 11:57:45,821 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '高湿度环境对扫地机器人和扫拖一体机的影响及使用注意事项'}
+2026-03-25 11:57:51,772 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-25 11:57:51,800 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有11条历史消息
+2026-03-25 11:57:51,800 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 高湿度环境可能导致扫地机器人和扫拖一体机内部电子元件受潮，影响正常运行甚至造成损坏；使用时应避免在积水或过度潮湿地面作业，使用后及时清理并保持机器干燥，存放于通风处。
+2026-03-25 12:00:56,531 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 12:00:56,531 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 天气
+2026-03-25 12:00:59,609 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 12:01:00,514 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 12:01:00,527 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 12:01:00,528 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 12:01:04,237 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 12:01:05,892 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 12:01:06,001 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 12:01:06,002 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 查询到Nanchangfu的天气信息如下：
+
+【实时天气】
+🌡️ 温度: 18°C（体感温度 18°C）
+🌥️ 天气状况: Patchy rain nearby
+💧 湿度: 73%
+🌬️ 风速: 4公里/小时
+☀️ 紫外线指数: 5
+👁️ 能见度: 10公里
+⏰ 观测时间: 2026-03-25 11:40 AM
+
+【未来三天预报】
+今日预报: Patchy rain nearby, 最高20°C, 最低14°C, 降雨概率100%
+明日预报: Light rain shower, 最高17°C, 最低16°C, 降雨概率100%
+后日预报: Mist, 最高19°C, 最低15°C, 降雨概率0%
+
+以上天气信息仅供参考，具体以实际为准。
+2026-03-25 12:01:39,165 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 12:01:39,165 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 天气’
+2026-03-25 12:01:42,290 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 12:01:43,081 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 12:01:43,097 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 12:01:43,097 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 12:01:44,995 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 12:01:47,971 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 12:01:48,055 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 12:01:48,055 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 查询到Nanchangfu的天气信息如下：
+
+【实时天气】
+🌡️ 温度: 18°C（体感温度 18°C）
+🌥️ 天气状况: Patchy rain nearby
+💧 湿度: 73%
+🌬️ 风速: 4公里/小时
+☀️ 紫外线指数: 5
+👁️ 能见度: 10公里
+⏰ 观测时间: 2026-03-25 11:40 AM
+
+【未来三天预报】
+今日预报: Patchy rain nearby, 最高20°C, 最低14°C, 降雨概率100%
+明日预报: Light rain shower, 最高17°C, 最低16°C, 降雨概率100%
+后日预报: Mist, 最高19°C, 最低15°C, 降雨概率0%
+
+以上天气信息仅供参考，具体以实际为准。
+2026-03-25 12:07:21,989 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 12:07:21,989 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 你好，请介绍一下你自己
+2026-03-25 12:07:30,835 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 12:07:30,835 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 天气
+2026-03-25 12:07:34,572 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 12:07:35,354 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 12:07:35,369 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 12:07:35,369 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 12:07:37,342 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-25 12:07:39,367 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 12:07:39,446 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 12:07:39,446 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 查询到Nanchangfu的天气信息如下：
+
+【实时天气】
+🌡️ 温度: 18°C（体感温度 18°C）
+🌥️ 天气状况: Patchy rain nearby
+💧 湿度: 73%
+🌬️ 风速: 4公里/小时
+☀️ 紫外线指数: 5
+👁️ 能见度: 10公里
+⏰ 观测时间: 2026-03-25 11:40 AM
+
+【未来三天预报】
+今日预报: Patchy rain nearby, 最高20°C, 最低14°C, 降雨概率100%
+明日预报: Light rain shower, 最高17°C, 最低16°C, 降雨概率100%
+后日预报: Mist, 最高19°C, 最低15°C, 降雨概率0%
+
+以上天气信息仅供参考，具体以实际为准。
+2026-03-25 12:11:16,312 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-25 12:11:16,312 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 天气
+2026-03-25 12:11:17,922 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-25 12:11:21,782 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-25 12:11:21,795 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-25 12:11:21,795 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-25 12:11:25,479 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang', 'user_question': '天气'}
+2026-03-25 12:11:31,495 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-25 12:11:31,583 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-25 12:11:31,583 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 根据您的询问（天气），查询到Nanchangfu的天气信息如下：
+
+【实时天气】
+🌡️ 温度: 18°C（体感温度 18°C）
+🌥️ 天气状况: Patchy rain nearby
+💧 湿度: 73%
+🌬️ 风速: 4公里/小时
+☀️ 紫外线指数: 5
+👁️ 能见度: 10公里
+⏰ 观测时间: 2026-03-25 11:40 AM
+
+【未来三天预报】
+今日预报: Patchy rain nearby, 最高20°C, 最低14°C, 降雨概率100%
+明日预报: Light rain shower, 最高17°C, 最低16°C, 降雨概率100%
+后日预报: Mist, 最高19°C, 最低15°C, 降雨概率0%
+
+以上天气信息仅供参考，具体以实际为准。
