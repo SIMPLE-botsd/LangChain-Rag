@@ -1,14 +1,16 @@
-# 智扫通智能客服系统
+# 情绪气象台
 
-> 基于大语言模型的领域知识问答与个性化服务系统
+> 心理关怀与氛围陪伴AI助手
 
-基于 AI 大模型的智能客服系统，支持知识库检索、天气查询、用户报告生成等功能。
+基于 AI 大模型的情感陪伴智能客服系统，支持情绪识别、天气共情、暖心文案、氛围推荐、心理报告生成等功能。
 
 ## 功能特性
-- *知识库检索增强生成 (RAG)*：基于 Chroma 向量数据库与 DashScope Text Embedding 构建领域知识向量空间，采用混合检索策略（dense + sparse）实现语义匹配，通过 ReAct (Reasoning + Acting) Agent 框架实现精准的工具调用与上下文推理
-- *智能多工具编排*：基于 LangChain Agent 与中间件（Middleware）机制实现动态工具链编排，支持工具监控、日志增强、上下文注入；Tool Calling 覆盖 RAG 检索、天气 API、地理位置服务、外部数据查询等
-- *自适应提示词系统*：通过中间件实现的动态提示词切换机制，根据对话场景（闲聊问答/报告生成）自动注入不同 system prompt，支持上下文感知的少样本学习
-- *流式生成与打字机效果*·：基于 LangChain 的流式输出 (stream_mode="values")，配合前端增量渲染实现
+
+- *知识库检索增强生成 (RAG)*：基于 Chroma 向量数据库与 DashScope Text Embedding 构建心理关怀知识向量空间，采用混合检索策略（dense + sparse）实现语义匹配，通过 ReAct (Reasoning + Acting) Agent 框架实现精准的工具调用与上下文推理
+- *天气-情绪映射系统*：根据用户所在位置的天气状况，结合时间、场景，智能匹配情绪关怀策略，提供个性化的温暖回复
+- *智能多工具编排*：基于 LangChain Agent 与中间件（Middleware）机制实现动态工具链编排，支持工具监控、日志增强、上下文注入；Tool Calling 覆盖 RAG 检索、天气 API、地理位置服务、外部情绪记录查询等
+- *自适应提示词系统*：通过中间件实现的动态提示词切换机制，根据对话场景（情绪陪伴/报告生成）自动注入不同 system prompt，支持上下文感知的少样本学习
+- *流式生成与打字机效果*：基于 LangChain 的流式输出 (stream_mode="values")，配合前端增量渲染实现
 
 ## 技术栈
 
@@ -25,7 +27,7 @@
 
 ```
 AiAgent_copy/
-├── app.py                      # Streamlit 主界面入口
+├── app.py                      # Streamlit 主界面入口（情绪气象台UI）
 ├── agent/
 │   ├── react_agent.py          # ReAct Agent 核心实现
 │   └── tools/
@@ -47,15 +49,24 @@ AiAgent_copy/
 │   ├── agent.yml               # Agent 配置
 │   └── prompt.yml              # 提示词路径配置
 ├── prompts/                    # 提示词模板
-│   ├── main_prompt.txt         # 主系统提示词
+│   ├── main_prompt.txt         # 主系统提示词（情绪陪伴角色）
 │   ├── rag_summarize.txt       # RAG 检索提示词
-│   └── report_prompt.txt       # 报告生成提示词
+│   └── report_prompt.txt       # 报告生成提示词（心理关怀报告）
 └── data/                       # 知识库数据
-    ├── *.txt                   # 知识文档
-    ├── *.pdf                   # PDF 文档
+    ├── *.txt                   # 心理关怀知识文档
     └── external/
-        └── records.csv         # 用户使用记录
+        └── records.csv         # 用户情绪历程记录
 ```
+
+## 知识库内容
+
+| 文件 | 内容 |
+|------|------|
+| 天气情绪映射.txt | 不同天气状况对应的情绪响应策略 |
+| 心理小贴士.txt | 正念冥想、情绪调节、压力缓解技巧 |
+| 氛围推荐.txt | 音乐、电影、活动推荐（按场景分类） |
+| 场景对话库.txt | 位置×时间×天气组合场景对话 |
+| 暖心文案库.txt | 早安、晚安、鼓励、安慰等治愈系文案 |
 
 ## 快速开始
 
@@ -92,20 +103,41 @@ streamlit run app.py
 
 | 工具 | 功能 | 触发场景 |
 |------|------|----------|
-| `rag_summarize` | 知识库检索 | 专业知识问答 |
-| `get_weather` | 天气查询 | 询问天气或环境影响 |
-| `get_user_location` | 获取用户位置 | 自动定位 |
-| `get_user_id` | 获取用户 ID | 生成报告 |
-| `get_current_month` | 获取当前月份 | 生成报告 |
-| `fetch_external_data` | 查询使用记录 | 生成报告 |
+| `rag_summarize` | 心理知识库检索 | 需要情绪调节建议、心理小贴士 |
+| `get_weather` | 天气查询 | 询问天气或需要结合天气给情绪回应 |
+| `get_user_location` | 获取用户位置 | 自动获取用户所在城市 |
+| `get_user_id` | 获取用户 ID | 生成情绪报告 |
+| `get_current_month` | 获取当前月份 | 生成情绪报告 |
+| `fetch_external_data` | 查询情绪历程记录 | 生成情绪关怀报告 |
 | `fill_context_for_report` | 切换报告模式 | 明确要求生成报告 |
+
+## 核心场景
+
+### 天气-情绪映射
+
+| 天气 | 情绪响应 |
+|------|----------|
+| 晴天 | 愉悦、振奋、推荐户外活动 |
+| 阴天 | 平静、沉思、适合室内活动 |
+| 雨天 | 惆怅、浪漫、适合陪伴倾听 |
+| 雪天 | 宁静、童趣、适合温暖相聚 |
+| 高温 | 烦躁、疲惫、推荐消暑和冥想 |
+| 深夜+雨天 | 孤独、敏感、需要温暖陪伴 |
+
+### 特色功能
+
+- 🌧️ **天气情绪映射**：根据天气状况提供对应的情绪关怀
+- 💭 **正念冥想引导**：提供呼吸练习、身体扫描等减压技巧
+- 🎵 **氛围推荐**：根据场景推荐音乐、电影、活动
+- 📝 **情绪报告**：生成个人情绪历程与关怀建议
+- 🌙 **深夜陪伴**：为深夜失眠的用户提供温暖陪伴
 
 ## 架构设计
 
 ```
 ┌─────────────────────────────────────┐
 │      Streamlit UI (app.py)          │
-│   聊天界面 / 消息管理 / 流式输出      │
+│   情绪气象台界面 / 消息管理 / 流式输出  │
 └─────────────────┬───────────────────┘
                   │
                   ▼
@@ -131,7 +163,7 @@ streamlit run app.py
         ▼                 ▼
 ┌───────────────┐  ┌──────────────────┐
 │  VectorStore  │  │   Prompt 模板     │
-│   (Chroma)    │  │ 动态提示词切换     │
+│   (Chroma)    │  │ 情绪角色+报告生成  │
 └───────────────┘  └──────────────────┘
 ```
 
@@ -141,46 +173,7 @@ streamlit run app.py
 
 1. **工具监控** (`monitor_tool`)：记录工具调用日志，切换报告上下文
 2. **模型日志** (`log_before_model`)：模型调用前的日志记录
-3. **动态提示词** (`report_prompt_switch`)：根据场景（普通问答/报告生成）动态切换系统提示词
-
-## 知识库管理
-
-将知识文档（`.txt`、`.pdf`）放入 `data/` 目录，系统会自动：
-
-1. 加载并解析文档
-2. 按配置分块（chunk_size=200, overlap=20）
-3. 生成向量存入 Chroma 数据库
-4. 检索时返回最相关的 Top-K 文档
-
-## 配置文件说明
-
-### config/rag.yml
-```yaml
-chat_model_name: qwen3-max       # 聊天模型名称
-embedding_model_name: text-embedding-v4  # 嵌入模型名称
-```
-
-### config/chroma.yml
-```yaml
-collection_name: agent           # 向量集合名
-persist_directory: chroma_db     # 向量库持久化路径
-k: 3                             # 检索返回数量
-chunk_size: 200                  # 分块大小
-chunk_overlap: 20                # 分块重叠
-```
-
-## 扩展开发
-
-### 添加新工具
-
-1. 在 `agent/tools/agent_tools.py` 中使用 `@tool` 装饰器定义
-2. 在 `agent/react_agent.py` 的 `create_agent` 中注册
-
-### 添加新提示词
-
-1. 在 `prompts/` 目录创建 `.txt` 文件
-2. 在 `config/prompt.yml` 中注册路径
-3. 通过 `utils/prompt_loader.py` 加载
+3. **动态提示词** (`report_prompt_switch`)：根据场景（情绪陪伴/报告生成）动态切换系统提示词
 
 ## 许可证
 

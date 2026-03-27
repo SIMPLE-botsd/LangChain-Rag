@@ -44,7 +44,8 @@ def log_before_model(
     
 @dynamic_prompt    # 每一次在生成提示词前都调用这个函数，根据当前的上下文动态切换提示词    
 def report_prompt_switch(request: ModelRequest):    # 根据不同的场景切换不同的提示词 
-    is_report = request.runtime.context.get("report", False)   # 从运行时上下文中获取是否是报告生成的场景
+    runtime_context = getattr(request.runtime, 'context', None) or {}
+    is_report = runtime_context.get("report", False)   # 从运行时上下文中获取是否是报告生成的场景
     if is_report:
         logger.info("[report_prompt_switch]检测到报告生成场景，切换到报告提示词")
         return load_report_prompts()   # 返回报告生成的提示词

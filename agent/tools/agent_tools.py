@@ -22,102 +22,78 @@ def rag_summarize(query: str):
 
 @tool(description="这是一个天气查询工具，可以根据用户输入的城市名称返回该城市的天气信息。city参数直接传入用户说的城市名即可，user_question参数传入用户原始问题（如果有的话），工具会结合用户问题给出更贴切的回复")
 def get_weather(city: str, user_question: str = "") -> str:
-    """查询城市天气，使用wttr.in免费API
+    """查询城市天气，使用心知天气免费API
     
     Args:
         city: 用户提到的城市名称，直接传入即可
         user_question: 用户原始问题，用于回复时引用
     """
     try:
+        # 心知天气API配置
+        SENIVERSE_KEY = os.environ.get("SENIVERSE_KEY", "") or "SIWcWOHZmX77tVKUY"
+        if not SENIVERSE_KEY or SENIVERSE_KEY == "你的key":
+            # 如果没有配置key，返回友好提示
+            return f"【天气信息暂时无法获取，但这不重要，重要的是你今天感觉怎么样？】"
+        
         # 构建参考信息
         ref_info = f"根据您的询问（{user_question}），" if user_question else ""
         
-        # wttr.in API - 完全免费，无需注册
-        url = f"http://wttr.in/{city}?format=j1"
-        with urllib.request.urlopen(url, timeout=10) as response:
-            data = json.loads(response.read().decode('utf-8'))
+        # 心知天气API - 获取当前天气
+        url_now = f"https://api.seniverse.com/v3/weather/now.json?key={SENIVERSE_KEY}&location={city}&language=zh-Hans&unit=c"
+        with urllib.request.urlopen(url_now, timeout=10) as response:
+            data_now = json.loads(response.read().decode('utf-8'))
         
-        # 获取实际城市名（nearest_area是列表，areaName也是列表）
-        nearest_area = data.get('nearest_area', [])
-        if nearest_area and isinstance(nearest_area, list):
-            area_info = nearest_area[0]
-            area_name_list = area_info.get('areaName', [])
-            if area_name_list and isinstance(area_name_list, list) and len(area_name_list) > 0:
-                actual_city = area_name_list[0].get('value', city)
-            else:
-                actual_city = city
-        else:
-            actual_city = city
-        display_city = actual_city if actual_city else city
+        # 心知天气API - 获取三天预报
+        url_daily = f"https://api.seniverse.com/v3/weather/daily.json?key={SENIVERSE_KEY}&location={city}&language=zh-Hans&unit=c&days=3"
+        with urllib.request.urlopen(url_daily, timeout=10) as response:
+            data_daily = json.loads(response.read().decode('utf-8'))
         
-        # 解析当前天气数据
-        current_condition = data.get('current_condition', [])
-        if current_condition and isinstance(current_condition, list):
-            current = current_condition[0]
-        else:
-            current = {}
+        # 解析当前天气
+        results_now = data_now.get('results', [{}])
+        now_data = results_now[0].get('now', {}) if results_now else {}
         
-        temp_C = current.get('temp_C', '未知')
-        feels_like = current.get('FeelsLikeC', '未知')
-        humidity = current.get('humidity', '未知')
-        windspeedKmph = current.get('windspeedKmph', '未知')
-        weather_desc_list = current.get('weatherDesc', [])
-        if weather_desc_list and isinstance(weather_desc_list, list) and len(weather_desc_list) > 0:
-            weatherDesc = weather_desc_list[0].get('value', '未知')
-        else:
-            weatherDesc = '未知'
-        localObsDateTime = current.get('localObsDateTime', '未知')
-        uvIndex = current.get('uvIndex', '未知')
-        visibility = current.get('visibility', '未知')
+        location_data = results_now[0].get('location', {}) if results_now else {}
+        display_city = location_data.get('name', city)
         
-        # 获取未来几天预报
-        weather_forecast = data.get('weather', [])
+        # 处理可能为None的字段
+        temp_C = now_data.get('temperature') or now_data.get('temp') or '?'
+        feels_like = now_data.get('feels_like') or now_data.get('feelsLike') or ''
+        weatherDesc = now_data.get('text') or '未知'
+        humidity = now_data.get('humidity') or '?'
+        wind_dir = now_data.get('wind_direction') or now_data.get('windDir') or ''
+        wind_scale = now_data.get('wind_scale') or now_data.get('windSpeed') or ''
+        
+        # 解析三天预报
+        results_daily = data_daily.get('results', [{}])
+        daily_data = results_daily[0].get('daily', []) if results_daily else []
+        
         forecast_info = ""
-        if weather_forecast and isinstance(weather_forecast, list):
-            day_names = ['今日', '明日', '后日']
-            for i, day in enumerate(weather_forecast[:3]):
-                if not isinstance(day, dict):
-                    continue
-                maxTemp = day.get('maxtempC', '')
-                minTemp = day.get('mintempC', '')
-                hourly_list = day.get('hourly', [])
-                if hourly_list and isinstance(hourly_list, list) and len(hourly_list) > 0:
-                    hourly = hourly_list[0]
-                    if isinstance(hourly, dict):
-                        desc_list = hourly.get('weatherDesc', [])
-                        if desc_list and isinstance(desc_list, list) and len(desc_list) > 0:
-                            desc = desc_list[0].get('value', '')
-                        else:
-                            desc = ''
-                        chance_of_rain = hourly.get('chanceofrain', '')
-                    else:
-                        desc = ''
-                        chance_of_rain = ''
-                else:
-                    desc = ''
-                    chance_of_rain = ''
-                
-                day_label = day_names[i] if i < len(day_names) else f'第{i+1}天'
-                forecast_info += f"\n{day_label}预报: {desc}, 最高{maxTemp}°C, 最低{minTemp}°C, 降雨概率{chance_of_rain}%"
+        day_names = ['今日', '明日', '后天']
+        for i, day in enumerate(daily_data):
+            if i < len(day_names):
+                text_day = day.get('text_day') or day.get('textDay') or ''
+                text_night = day.get('text_night') or day.get('textNight') or ''
+                low = day.get('low') or '?'
+                high = day.get('high') or '?'
+                rain_prob = day.get('rain_prob') or day.get('rainProb') or '0'
+                forecast_info += f"\n{day_names[i]}: {text_day}转{text_night} | {low}~{high}°C | 降雨{rain_prob}%"
         
-        result = f"""{ref_info}查询到{display_city}的天气信息如下：
+        wind_info = f"{wind_dir}{wind_scale}级" if wind_dir or wind_scale else "微风"
+        feels_info = f"（体感{feels_like}°C）" if feels_like else ""
+        
+        result = f"""{ref_info}你在{display_city}的天气：
 
-【实时天气】
-🌡️ 温度: {temp_C}°C（体感温度 {feels_like}°C）
-🌥️ 天气状况: {weatherDesc}
-💧 湿度: {humidity}%
-🌬️ 风速: {windspeedKmph}公里/小时
-☀️ 紫外线指数: {uvIndex}
-👁️ 能见度: {visibility}公里
-⏰ 观测时间: {localObsDateTime}
+🌡️ {temp_C}°C {feels_info}
+🌥️ {weatherDesc}
+💧 湿度 {humidity}%
+🌬️ {wind_info}
 
-【未来三天预报】{forecast_info}
-
-以上天气信息仅供参考，具体以实际为准。"""
+【三天预报】{forecast_info}"""
         return result
     except Exception as e:
         logger.error(f"天气查询失败: {e}")
-        return f"抱歉，无法获取{city}的天气信息，请稍后重试。原因：{str(e)}"
+        # 返回友好提示，让AI自然转换成对话
+        return f"【天气信息暂时无法获取，但这不重要，重要的是你今天感觉怎么样？】"
 
 
 @tool(description = "获取用户所在位置的工具函数,返回用户所在城市的名称")
@@ -155,15 +131,17 @@ def get_current_month() -> str:
 
 def generate_external_data():
     """
+    情绪历程数据格式：
     {
         "user_id": {
-            "month":{"特征": xxx, "效率": xxx},
-            "month":{"特征": xxx, "效率": xxx},
-            "month":{"特征": xxx, "效率": xxx},
-            "month":{"特征": xxx, "效率": xxx},
-        },
+            "month": {
+                "情绪状态": xxx,
+                "天气场景": xxx,
+                "心理活动": xxx,
+                "关怀记录": xxx
+            }
+        }
     }
-    :return:
     """
     if not external_data:
         external_data_pa = get_abs_path(agent_config["external_data_path"])
@@ -172,28 +150,40 @@ def generate_external_data():
                     
         with open(external_data_pa,"r",encoding="utf-8") as f:
             for line in f.readlines()[1:]:  # 跳过表头
-                arr: list[str] = line.strip().split(",")
+                # 处理CSV格式，字段可能包含逗号在引号内
+                parts = []
+                in_quote = False
+                current = ""
+                for char in line.strip():
+                    if char == '"':
+                        in_quote = not in_quote
+                    elif char == ',' and not in_quote:
+                        parts.append(current.replace('"', ''))
+                        current = ""
+                    else:
+                        current += char
+                parts.append(current.replace('"', ''))
                 
-                user_id: str = arr[0].replace('"',"")  # 去掉可能存在的引号
-                feature: str = arr[1].replace('"',"")
-                efficiency: str = arr[2].replace('"',"")
-                consumables: str = arr[3].replace('"',"")
-                comparison: str = arr[4].replace('"',"")
-                time: str = arr[5].replace('"',"")
-                
-                if user_id not in external_data:
-                    external_data[user_id] = {}
-                
-                external_data[user_id][time] = {
-                    "特征": feature,
-                    "效率": efficiency,
-                    "耗材": consumables,
-                    "对比": comparison
-                }
-        
-    
+                if len(parts) >= 6:
+                    user_id: str = parts[0]
+                    emotion_state: str = parts[1]
+                    weather_scene: str = parts[2]
+                    mental_activity: str = parts[3]
+                    care_record: str = parts[4]
+                    time: str = parts[5]
+                    
+                    if user_id not in external_data:
+                        external_data[user_id] = {}
+                    
+                    external_data[user_id][time] = {
+                        "情绪状态": emotion_state,
+                        "天气场景": weather_scene,
+                        "心理活动": mental_activity,
+                        "关怀记录": care_record
+                    }
 
-@tool(description="从外部系统中获取用户的使用记录，以纯存符串形式返回，如果未检索到返回空字符串")
+
+@tool(description="从外部系统中获取用户的情绪历程记录，以纯字符串形式返回，如果未检索到返回空字符串")
 def fetch_external_data(user_id: str,month: str) -> str:
     generate_external_data()
     try:
@@ -207,5 +197,143 @@ def fetch_external_data(user_id: str,month: str) -> str:
 def fill_context_for_report():
     return "fill_context_for_report工具被调用，返回报告生成所需的上下文信息"
 
+
+@tool(description="音乐推荐工具，根据心情和场景推荐音乐。使用酷狗音乐API搜索")
+def recommend_music(mood: str = "", genre: str = "") -> str:
+    """根据用户的心情和喜好推荐音乐
+    
+    Args:
+        mood: 用户当前的心情或场景描述（如"治愈"、"雨天"、"失眠"、"开心"）
+        genre: 音乐风格偏好（如"轻音乐"、"爵士"、"古典"、"民谣"）
+    """
+    try:
+        # 构建搜索关键词
+        keyword_parts = []
+        if mood:
+            keyword_parts.append(mood)
+        if genre:
+            keyword_parts.append(genre)
+        
+        if not keyword_parts:
+            keyword_parts = ["治愈"]
+        
+        # 用空格连接，让搜索更准确
+        keyword = " ".join(keyword_parts)
+        
+        logger.info(f"[音乐推荐] 搜索关键词: {keyword}, mood={mood}, genre={genre}")
+        
+        # 使用酷狗音乐搜索API
+        import urllib.parse
+        encoded_keyword = urllib.parse.quote(keyword)
+        url = f"http://mobilecdn.kugou.com/api/v3/search/song?keyword={encoded_keyword}&page=1&pagesize=5&showtype=1"
+        
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X)',
+            'Referer': 'http://m.kugou.com/'
+        })
+        
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode('utf-8'))
+        
+        logger.info(f"[音乐推荐] API返回: status={data.get('status')}")
+        
+        if data.get('status') == 1 and data.get('data', {}).get('info'):
+            songs = data['data']['info'][:5]
+            song_list = []
+            for song in songs:
+                name = song.get('songname', '未知')
+                artist = song.get('singername', '未知')
+                song_list.append(f"{name} - {artist}")
+            
+            # 直接返回歌曲列表，让AI自己组织语言（不加前缀）
+            return "|".join(song_list)
+        else:
+            logger.warning(f"[音乐推荐] 未获取到数据: {data}")
+            return "MUSIC_ERROR:暂时无法获取音乐推荐"
+    
+    except Exception as e:
+        logger.error(f"音乐推荐失败: {e}", exc_info=True)
+        return "MUSIC_ERROR:暂时无法获取音乐推荐"
+
+
+def _get_fallback_music_by_mood(mood: str = "") -> str:
+    """根据心情返回定制音乐推荐"""
+    fallback_lists = {
+        "难过": """🎵 难过的时候，让这些音乐陪陪你：
+
+1. **River Flows in You** - 李闰珉
+2. **Sparkle** - 国立优  
+3. **Summer** - 久石让
+4. **告一段落的情绪** - 纯音乐
+5. **夜曲** - 肖邦
+
+音乐是情绪的容器，让它们陪你度过这个时刻 💜""",
+        
+        "开心": """🎵 开心的时候就要听欢快的歌！
+
+1. **Sunshine After Rain** - 轻快电子
+2. **Good Time** - Owl City
+3. **The Show** - Lenka
+4. **Lemon** - 米津玄師
+5. **无条件经典** - 流行精选
+
+让好心情继续蔓延！☀️""",
+        
+        "失眠": """🎵 夜深了，让这些音乐伴你入睡：
+
+1. **Weightless** - Marconi Union
+2. **Gymnopédie No.1** - 萨蒂
+3. **River Flows in You** - 李闰珉
+4. **雨声** - 白噪音
+5. **卡农** - 帕赫贝尔
+
+闭上眼睛，让旋律轻轻拥你入眠 🌙""",
+        
+        "治愈": """🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸""",
+        
+        "放松": """🎵 放松时光，听这些：
+
+1. **Kokoro** - 冈崎律子
+2. ** Nils Frahm** - 钢琴曲
+3. **天空之城** - 久石让
+4. **Summer** - 久石让
+5. **流动的城市** - 林海
+
+让音乐像温水一样包裹你 🫖""",
+        
+        "default": """🎵 治愈系音乐推荐：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **River Flows in You** - 李闰珉
+4. **天空之城** - 久石让
+5. **风居住的街道** - 矶村由纪子
+
+希望这些音乐能温暖你的时光 🎵"""
+    }
+    
+    # 匹配心情关键词
+    mood_lower = mood.lower() if mood else ""
+    if any(k in mood_lower for k in ["难过", "伤心", "悲伤", "痛"]):
+        return fallback_lists["难过"]
+    elif any(k in mood_lower for k in ["开心", "高兴", "快乐", "愉快"]):
+        return fallback_lists["开心"]
+    elif any(k in mood_lower for k in ["失眠", "睡不着", "夜深", "困"]):
+        return fallback_lists["失眠"]
+    elif any(k in mood_lower for k in ["治愈", "治愈系", "温暖"]):
+        return fallback_lists["治愈"]
+    elif any(k in mood_lower for k in ["放松", "舒缓", "平静"]):
+        return fallback_lists["放松"]
+    return fallback_lists["default"]
+
+
 # if __name__ == '__main__':
-#     print(fetch_external_data("1002","2025-01"))
+#     print(recommend_music("治愈", "轻音乐"))

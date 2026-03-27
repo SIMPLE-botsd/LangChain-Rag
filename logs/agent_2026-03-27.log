@@ -1,0 +1,68 @@
+2026-03-27 12:49:18,763 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:49:18,764 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 心情有点低落，能陪我说说话吗
+2026-03-27 12:49:53,225 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:49:53,225 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 一首温柔的歌
+2026-03-27 12:49:56,229 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '温柔治愈系歌曲推荐'}
+2026-03-27 12:49:58,364 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-27 12:49:58,380 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 12:49:58,380 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 参考资料中未提及具体温柔治愈系歌曲推荐。
+2026-03-27 12:58:22,220 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:58:22,220 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 12:58:24,205 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '治愈系音乐推荐'}
+2026-03-27 12:58:26,028 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-27 12:58:26,049 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 12:58:26,050 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 参考资料中未提供具体的治愈系音乐推荐内容。
+2026-03-27 12:58:41,879 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:58:41,879 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 定制
+2026-03-27 12:58:58,078 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:58:58,078 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 根据天气/心情推荐的音乐、电影或书单 🎵🌧️
+2026-03-27 12:58:59,483 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 12:59:00,555 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 12:59:00,571 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 12:59:00,571 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 12:59:02,588 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-27 12:59:09,657 - agent - ERROR - agent_tools.py:119 - 天气查询失败: 'NoneType' object has no attribute 'get'
+2026-03-27 12:59:09,658 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 12:59:09,690 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 12:59:09,691 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，无法获取Nanchang的天气信息，请稍后重试。原因：'NoneType' object has no attribute 'get'
+2026-03-27 12:59:11,530 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '雨天心情推荐音乐电影书单'}
+2026-03-27 12:59:14,208 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-27 12:59:14,236 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 12:59:14,236 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 参考资料中未提供关于雨天心情推荐的音乐、电影或书单信息。
+2026-03-27 12:59:47,890 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 12:59:47,890 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 睡不着，能给我讲个晚安故事吗
+2026-03-27 12:59:50,288 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：rag_summarize被调用，输入参数: {'query': '晚安故事 治愈 睡眠'}
+2026-03-27 12:59:52,236 - agent - INFO - middleware.py:24 - [tool monitor]工具：rag_summarize执行成功
+2026-03-27 12:59:52,254 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 12:59:52,255 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 晚安故事具有治愈效果，有助于改善睡眠。
+2026-03-27 13:00:17,722 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:00:17,722 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:00:19,827 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:00:19,828 - agent - ERROR - agent_tools.py:258 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:00:19,829 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:00:19,850 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:00:19,850 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，音乐推荐暂时不可用。你可以描述你想要的心情或风格，我来试试推荐。
+2026-03-27 13:00:48,085 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:00:48,085 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 今天天气怎么样？你感觉如何？
+2026-03-27 13:00:49,571 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:00:50,347 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:00:50,362 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:00:50,362 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 13:00:53,618 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang', 'user_question': '今天天气怎么样？你感觉如何？'}
+2026-03-27 13:00:54,122 - agent - ERROR - agent_tools.py:119 - 天气查询失败: 'NoneType' object has no attribute 'get'
+2026-03-27 13:00:54,122 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:00:54,154 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:00:54,154 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，无法获取Nanchang的天气信息，请稍后重试。原因：'NoneType' object has no attribute 'get'
+2026-03-27 13:04:29,611 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:04:29,612 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 今天天气怎么样？你感觉如何？
+2026-03-27 13:04:31,133 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:04:32,868 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:04:32,882 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:04:32,882 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 13:04:36,614 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang', 'user_question': '今天天气怎么样？你感觉如何？'}
+2026-03-27 13:04:42,208 - agent - ERROR - agent_tools.py:87 - 天气查询失败: 'NoneType' object has no attribute 'get'
+2026-03-27 13:04:42,209 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:04:42,231 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:04:42,231 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 【天气信息暂时无法获取，但这不重要，重要的是你今天感觉怎么样？】
+2026-03-27 13:04:57,544 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:04:57,545 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 听听音乐
