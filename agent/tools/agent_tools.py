@@ -245,8 +245,9 @@ def recommend_music(mood: str = "", genre: str = "") -> str:
                 artist = song.get('singername', '未知')
                 song_list.append(f"{name} - {artist}")
             
-            # 直接返回歌曲列表，让AI自己组织语言（不加前缀）
-            return "|".join(song_list)
+            result = "MUSIC_RESULT:" + "|".join(song_list)
+            logger.info(f"[音乐推荐] 成功: {result}")
+            return result
         else:
             logger.warning(f"[音乐推荐] 未获取到数据: {data}")
             return "MUSIC_ERROR:暂时无法获取音乐推荐"
@@ -256,84 +257,4 @@ def recommend_music(mood: str = "", genre: str = "") -> str:
         return "MUSIC_ERROR:暂时无法获取音乐推荐"
 
 
-def _get_fallback_music_by_mood(mood: str = "") -> str:
-    """根据心情返回定制音乐推荐"""
-    fallback_lists = {
-        "难过": """🎵 难过的时候，让这些音乐陪陪你：
 
-1. **River Flows in You** - 李闰珉
-2. **Sparkle** - 国立优  
-3. **Summer** - 久石让
-4. **告一段落的情绪** - 纯音乐
-5. **夜曲** - 肖邦
-
-音乐是情绪的容器，让它们陪你度过这个时刻 💜""",
-        
-        "开心": """🎵 开心的时候就要听欢快的歌！
-
-1. **Sunshine After Rain** - 轻快电子
-2. **Good Time** - Owl City
-3. **The Show** - Lenka
-4. **Lemon** - 米津玄師
-5. **无条件经典** - 流行精选
-
-让好心情继续蔓延！☀️""",
-        
-        "失眠": """🎵 夜深了，让这些音乐伴你入睡：
-
-1. **Weightless** - Marconi Union
-2. **Gymnopédie No.1** - 萨蒂
-3. **River Flows in You** - 李闰珉
-4. **雨声** - 白噪音
-5. **卡农** - 帕赫贝尔
-
-闭上眼睛，让旋律轻轻拥你入眠 🌙""",
-        
-        "治愈": """🎵 治愈系音乐清单：
-
-1. **菊次郎的夏天** - 久石让
-2. **Rain** - 押尾光太郎
-3. **天空之城** - 久石让
-4. **Always with Me** - 木村弓
-5. **风居住的街道** - 矶村由纪子
-
-这些旋律像温柔的手，轻轻抚平你的心 🌸""",
-        
-        "放松": """🎵 放松时光，听这些：
-
-1. **Kokoro** - 冈崎律子
-2. ** Nils Frahm** - 钢琴曲
-3. **天空之城** - 久石让
-4. **Summer** - 久石让
-5. **流动的城市** - 林海
-
-让音乐像温水一样包裹你 🫖""",
-        
-        "default": """🎵 治愈系音乐推荐：
-
-1. **菊次郎的夏天** - 久石让
-2. **Rain** - 押尾光太郎
-3. **River Flows in You** - 李闰珉
-4. **天空之城** - 久石让
-5. **风居住的街道** - 矶村由纪子
-
-希望这些音乐能温暖你的时光 🎵"""
-    }
-    
-    # 匹配心情关键词
-    mood_lower = mood.lower() if mood else ""
-    if any(k in mood_lower for k in ["难过", "伤心", "悲伤", "痛"]):
-        return fallback_lists["难过"]
-    elif any(k in mood_lower for k in ["开心", "高兴", "快乐", "愉快"]):
-        return fallback_lists["开心"]
-    elif any(k in mood_lower for k in ["失眠", "睡不着", "夜深", "困"]):
-        return fallback_lists["失眠"]
-    elif any(k in mood_lower for k in ["治愈", "治愈系", "温暖"]):
-        return fallback_lists["治愈"]
-    elif any(k in mood_lower for k in ["放松", "舒缓", "平静"]):
-        return fallback_lists["放松"]
-    return fallback_lists["default"]
-
-
-# if __name__ == '__main__':
-#     print(recommend_music("治愈", "轻音乐"))
