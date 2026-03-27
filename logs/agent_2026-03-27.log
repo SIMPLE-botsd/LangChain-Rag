@@ -66,3 +66,326 @@
 2026-03-27 13:04:42,231 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 【天气信息暂时无法获取，但这不重要，重要的是你今天感觉怎么样？】
 2026-03-27 13:04:57,544 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
 2026-03-27 13:04:57,545 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 听听音乐
+2026-03-27 13:09:48,354 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:09:48,354 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 今天天气怎么样？你感觉如何？
+2026-03-27 13:09:49,875 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:09:50,596 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:09:50,613 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:09:50,613 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 13:09:55,266 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang', 'user_question': '今天天气怎么样？你感觉如何？'}
+2026-03-27 13:09:55,554 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:09:55,607 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:09:55,607 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 根据您的询问（今天天气怎么样？你感觉如何？），你在南昌的天气：
+
+🌡️ 21°C（体感 ?°C）
+🌥️ 多云
+💧 湿度 ?%
+🌬️ 级
+
+【三天预报】
+今日: 阴→多云 | 14~21°C | 降雨0%
+明日: 阴→阴 | 14~21°C | 降雨0%
+后天: 雷阵雨→中雨 | 16~22°C | 降雨0%
+2026-03-27 13:10:34,921 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:10:34,922 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 比如听一首歌
+2026-03-27 13:10:36,980 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '放松', 'genre': '轻音乐'}
+2026-03-27 13:10:36,981 - agent - ERROR - agent_tools.py:244 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=放松 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:10:36,981 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:10:37,000 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:10:37,000 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 抱歉，音乐推荐暂时不可用。你可以描述你想要的心情或风格，我来试试推荐。
+2026-03-27 13:11:15,881 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:11:15,881 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 只是想发呆
+2026-03-27 13:11:40,943 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:11:40,944 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐音乐
+2026-03-27 13:12:02,644 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:12:02,644 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 放松、治愈、开心
+2026-03-27 13:12:35,267 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:12:35,267 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:12:38,669 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:12:38,671 - agent - ERROR - agent_tools.py:256 - 音乐推荐失败: URL can't contain control characters. '/soso/fcgi-bin/client_search_cp?w=治愈 轻音乐&format=json&p=1&n=5' (found at least ' ')
+2026-03-27 13:12:38,671 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:12:38,725 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:12:38,725 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 为你推荐一些经典治愈系音乐：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎  
+3. **River Flows in You** - 李闰珉
+4. **天空之城** - 久石让
+5. **夜曲** - 肖邦
+
+这些都是百听不厌的治愈系音乐，希望你喜欢～
+2026-03-27 13:14:14,210 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:14:14,210 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:14:25,805 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:14:25,807 - agent - ERROR - agent_tools.py:260 - 音乐推荐失败: URL can't contain control characters. '/soso/fcgi-bin/client_search_cp?w=治愈 轻音乐&format=json&p=1&n=5' (found at least ' ')
+2026-03-27 13:14:25,807 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:14:25,851 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:14:25,851 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 为你推荐一些经典治愈系音乐：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎  
+3. **River Flows in You** - 李闰珉
+4. **天空之城** - 久石让
+5. **夜曲** - 肖邦
+
+这些都是百听不厌的治愈系音乐，希望你喜欢～
+2026-03-27 13:14:52,746 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:14:52,746 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 我好难过推荐音乐
+2026-03-27 13:14:56,092 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '难过', 'genre': '轻音乐'}
+2026-03-27 13:14:56,093 - agent - ERROR - agent_tools.py:260 - 音乐推荐失败: URL can't contain control characters. '/soso/fcgi-bin/client_search_cp?w=难过 轻音乐&format=json&p=1&n=5' (found at least ' ')
+2026-03-27 13:14:56,093 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:14:56,142 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:14:56,142 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 为你推荐一些经典治愈系音乐：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎  
+3. **River Flows in You** - 李闰珉
+4. **天空之城** - 久石让
+5. **夜曲** - 肖邦
+
+这些都是百听不厌的治愈系音乐，希望你喜欢～
+2026-03-27 13:16:36,191 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:16:36,191 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:16:38,989 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:16:38,990 - agent - ERROR - agent_tools.py:252 - 音乐推荐失败: URL can't contain control characters. '/api/v3/search/song?keyword=治愈 轻音乐&page=1&pagesize=5&showtype=1' (found at least ' ')
+2026-03-27 13:16:38,991 - agent - ERROR - middleware.py:31 - [tool monitor]工具：recommend_music执行失败: name 'self' is not defined
+2026-03-27 13:16:45,771 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:16:45,771 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:16:47,655 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:16:47,656 - agent - ERROR - agent_tools.py:252 - 音乐推荐失败: URL can't contain control characters. '/api/v3/search/song?keyword=治愈 轻音乐&page=1&pagesize=5&showtype=1' (found at least ' ')
+2026-03-27 13:16:47,661 - agent - ERROR - middleware.py:31 - [tool monitor]工具：recommend_music执行失败: name 'self' is not defined
+2026-03-27 13:17:35,612 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:17:35,613 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:17:40,138 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:17:40,139 - agent - ERROR - agent_tools.py:251 - 音乐推荐失败: URL can't contain control characters. '/api/v3/search/song?keyword=治愈 轻音乐&page=1&pagesize=5&showtype=1' (found at least ' ')
+2026-03-27 13:17:40,139 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:17:40,189 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:17:40,189 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸
+2026-03-27 13:24:24,016 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:24:24,016 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:26:08,826 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:26:08,826 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:26:13,404 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:26:13,405 - agent - ERROR - agent_tools.py:250 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:26:13,405 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:26:13,407 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:26:13,407 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸
+2026-03-27 13:27:12,564 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:27:12,564 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:27:15,964 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:27:15,965 - agent - ERROR - agent_tools.py:250 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:27:15,965 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:27:15,966 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:27:15,966 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸
+2026-03-27 13:27:33,490 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有2条历史消息
+2026-03-27 13:27:33,490 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 告诉我你那边的天气
+2026-03-27 13:27:39,463 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:27:39,465 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:27:39,466 - agent - ERROR - agent_tools.py:250 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:27:39,466 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:27:40,327 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:27:40,329 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:27:40,330 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸
+2026-03-27 13:27:42,238 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-27 13:27:42,560 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:27:42,562 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:27:42,563 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 你在南昌的天气：
+
+🌡️ 21°C 
+🌥️ 多云
+💧 湿度 ?%
+🌬️ 微风
+
+【三天预报】
+今日: 阴转多云 | 14~21°C | 降雨0%
+明日: 阴转阴 | 14~21°C | 降雨0%
+后天: 雷阵雨转中雨 | 16~22°C | 降雨0%
+2026-03-27 13:27:48,634 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:27:48,634 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:27:54,449 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:27:54,450 - agent - ERROR - agent_tools.py:250 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:27:54,450 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:27:54,451 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:27:54,451 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 治愈系音乐清单：
+
+1. **菊次郎的夏天** - 久石让
+2. **Rain** - 押尾光太郎
+3. **天空之城** - 久石让
+4. **Always with Me** - 木村弓
+5. **风居住的街道** - 矶村由纪子
+
+这些旋律像温柔的手，轻轻抚平你的心 🌸
+2026-03-27 13:28:03,870 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:28:03,871 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 天气
+2026-03-27 13:28:06,352 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:28:07,029 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:28:07,031 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:28:07,031 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 13:28:11,130 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang'}
+2026-03-27 13:28:11,364 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:28:11,365 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:28:11,366 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 你在南昌的天气：
+
+🌡️ 21°C 
+🌥️ 多云
+💧 湿度 ?%
+🌬️ 微风
+
+【三天预报】
+今日: 阴转多云 | 14~21°C | 降雨0%
+明日: 阴转阴 | 14~21°C | 降雨0%
+后天: 雷阵雨转中雨 | 16~22°C | 降雨0%
+2026-03-27 13:28:24,899 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:28:24,900 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐点适合这种天气的歌
+2026-03-27 13:28:28,002 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '放松', 'genre': '轻音乐'}
+2026-03-27 13:28:28,003 - agent - ERROR - agent_tools.py:250 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=放松 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:28:28,004 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:28:28,005 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:28:28,005 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 🎵 放松时光，听这些：
+
+1. **Kokoro** - 冈崎律子
+2. ** Nils Frahm** - 钢琴曲
+3. **天空之城** - 久石让
+4. **Summer** - 久石让
+5. **流动的城市** - 林海
+
+让音乐像温水一样包裹你 🫖
+2026-03-27 13:30:41,731 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:30:41,731 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:30:43,977 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:30:43,978 - agent - ERROR - agent_tools.py:249 - 音乐推荐失败: URL can't contain control characters. '/api/search.163?info=治愈 轻音乐&type=so' (found at least ' ')
+2026-03-27 13:30:43,978 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:30:43,980 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:30:43,981 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_ERROR:暂时无法获取音乐推荐
+2026-03-27 13:35:06,769 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:35:06,770 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:35:09,652 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:35:09,659 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:35:09,661 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:35:09,661 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_RESULT:River Flows in You - 李闰珉|天空之城 - 久石让|Summer - 久石让|Rain - 押尾光太郎|风居住的街道 - 矶村由纪子
+2026-03-27 13:35:27,673 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:35:27,673 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:35:32,477 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:35:32,478 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:35:32,479 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:35:32,480 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_RESULT:River Flows in You - 李闰珉|天空之城 - 久石让|Summer - 久石让|Rain - 押尾光太郎|风居住的街道 - 矶村由纪子
+2026-03-27 13:35:56,660 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:35:56,660 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 治愈推荐歌曲
+2026-03-27 13:36:05,915 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:36:05,916 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:36:05,918 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:36:05,918 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_RESULT:River Flows in You - 李闰珉|天空之城 - 久石让|Summer - 久石让|Rain - 押尾光太郎|风居住的街道 - 矶村由纪子
+2026-03-27 13:39:48,086 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:39:48,087 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:39:50,699 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:39:50,700 - agent - ERROR - agent_tools.py:248 - 音乐推荐失败: 'ascii' codec can't encode characters in position 32-36: ordinal not in range(128)
+2026-03-27 13:39:50,700 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:39:50,702 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:39:50,703 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_ERROR:暂时无法获取音乐推荐
+2026-03-27 13:40:23,603 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:40:23,604 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 治愈系的音乐
+2026-03-27 13:40:27,852 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:40:27,853 - agent - ERROR - agent_tools.py:248 - 音乐推荐失败: 'ascii' codec can't encode characters in position 32-36: ordinal not in range(128)
+2026-03-27 13:40:27,853 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:40:27,854 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:40:27,855 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_ERROR:暂时无法获取音乐推荐
+2026-03-27 13:43:25,653 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:43:25,654 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:43:29,277 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:43:29,278 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 治愈 轻音乐, mood=治愈, genre=轻音乐
+2026-03-27 13:43:29,825 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:43:29,825 - agent - INFO - agent_tools.py:249 - [音乐推荐] 成功: MUSIC_RESULT:瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:43:29,826 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:43:29,827 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:43:29,828 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_RESULT:瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:44:32,520 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:44:32,520 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 治愈系的音乐
+2026-03-27 13:44:34,836 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:44:34,836 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 治愈 轻音乐, mood=治愈, genre=轻音乐
+2026-03-27 13:44:34,997 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:44:34,998 - agent - INFO - agent_tools.py:249 - [音乐推荐] 成功: MUSIC_RESULT:瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:44:34,998 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:44:34,999 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:44:35,000 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : MUSIC_RESULT:瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:48:13,853 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有1条历史消息
+2026-03-27 13:48:13,854 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 推荐一首治愈系的音乐吧
+2026-03-27 13:48:16,020 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:48:16,021 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 治愈 轻音乐, mood=治愈, genre=轻音乐
+2026-03-27 13:48:16,198 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:48:16,199 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:48:16,200 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:48:16,200 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:49:07,035 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有3条历史消息
+2026-03-27 13:49:07,036 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 治愈系的音乐
+2026-03-27 13:49:09,126 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '轻音乐'}
+2026-03-27 13:49:09,127 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 治愈 轻音乐, mood=治愈, genre=轻音乐
+2026-03-27 13:49:09,366 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:49:09,367 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:49:09,369 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:49:09,369 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 瞬间的永恒 (钢琴曲) - 赵海洋|The Truth That You Leave - Pianoboy高至豪|Windy Hill - 羽肿|Merry Christmas Mr.Lawrence - 坂本龍一|Komorebi - m-taku
+2026-03-27 13:49:21,373 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有5条历史消息
+2026-03-27 13:49:21,374 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 周杰伦音乐推荐
+2026-03-27 13:49:24,271 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '治愈', 'genre': '周杰伦'}
+2026-03-27 13:49:24,272 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 治愈 周杰伦, mood=治愈, genre=周杰伦
+2026-03-27 13:49:24,578 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:49:24,579 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:49:24,581 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:49:24,581 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 周杰伦《稻香》 - 希望用音乐治愈你|发如雪 (原唱:周杰伦) - 萧久|夜曲 (原唱:周杰伦) - 过往|算什么男人 (原唱:周杰伦) - 过往|晴天 - 周杰伦
+2026-03-27 13:50:23,634 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有7条历史消息
+2026-03-27 13:50:23,636 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情HumanMessage : 我现在想谈恋爱，给我推荐方大同的歌根据现在我这的天气
+2026-03-27 13:50:26,358 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_user_location被调用，输入参数: {}
+2026-03-27 13:50:27,059 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_user_location执行成功
+2026-03-27 13:50:27,061 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有9条历史消息
+2026-03-27 13:50:27,062 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : Nanchang
+2026-03-27 13:50:32,464 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：get_weather被调用，输入参数: {'city': 'Nanchang', 'user_question': '我现在想谈恋爱，给我推荐方大同的歌根据现在我这的天气'}
+2026-03-27 13:50:32,748 - agent - INFO - middleware.py:24 - [tool monitor]工具：get_weather执行成功
+2026-03-27 13:50:32,749 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有11条历史消息
+2026-03-27 13:50:32,750 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 根据您的询问（我现在想谈恋爱，给我推荐方大同的歌根据现在我这的天气），你在南昌的天气：
+
+🌡️ 21°C 
+🌥️ 多云
+💧 湿度 ?%
+🌬️ 微风
+
+【三天预报】
+今日: 阴转多云 | 14~21°C | 降雨0%
+明日: 阴转阴 | 14~21°C | 降雨0%
+后天: 雷阵雨转中雨 | 16~22°C | 降雨0%
+2026-03-27 13:50:34,868 - agent - INFO - middleware.py:21 - [tool monitor]执行工具：recommend_music被调用，输入参数: {'mood': '想谈恋爱', 'genre': '方大同'}
+2026-03-27 13:50:34,869 - agent - INFO - agent_tools.py:223 - [音乐推荐] 搜索关键词: 想谈恋爱 方大同, mood=想谈恋爱, genre=方大同
+2026-03-27 13:50:35,277 - agent - INFO - agent_tools.py:238 - [音乐推荐] API返回: status=1
+2026-03-27 13:50:35,278 - agent - INFO - middleware.py:24 - [tool monitor]工具：recommend_music执行成功
+2026-03-27 13:50:35,279 - agent - INFO - middleware.py:39 - [log_before_model]即将调用模型,带有13条历史消息
+2026-03-27 13:50:35,279 - agent - DEBUG - middleware.py:41 - [log_before_model]历史消息详情ToolMessage : 特别的人 - 方大同|麦恩莉 - 方大同|春风吹 - 方大同|才二十三 - 方大同|红豆 - 方大同
